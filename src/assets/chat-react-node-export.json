@@ -1,0 +1,18 @@
+{
+  "users" : {
+    "H8loxMNg7Lb9dxNWQZ4HYvgPLiN2" : {
+      "email" : "bazar2@gmail.com",
+      "username" : "Bazar"
+    },
+    "quv7ekFj1oQnmGtXCFaHV4Kri1S2" : {
+      "email" : "lila@gmail.com",
+      "username" : "lila"
+    }
+  },
+  "messages" : {
+    "xyz":{
+      "text":"olé premier text",
+      "username":"lila"
+    }
+  }
+}

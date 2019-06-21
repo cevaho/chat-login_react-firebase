@@ -1,0 +1,51 @@
+https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/
+
+creation d'un router avec le package react-router-dom
+	lequel utilise {link} dans le component Navigation
+	lequel utilise {BrowserRouter as Router} dans le component app.js
+
+	les urls sont contenues dans des constantes, dans le fichier Routes.js disponible dans le dossier /auth
+
+	Route de react-router-dom va permettre d'afficher un component en fonction de l'url donnée
+		il faut importer tous les component dont on aura besoin dans App.js
+			ensuite la balise Route fera référence à chaque component selon l'url donnée en attribut
+
+	lier le projet à firebase apres avoir créer un projet dans firebase
+		placer les scripts vers firebase dans index.html (option cdn)
+			<!-- The core Firebase JS SDK is always required and must be listed first -->
+			<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+
+			<!-- TODO: Add SDKs for Firebase products that you want to use
+			     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+			<script>
+			  // Your web app's Firebase configuration
+			  var firebaseConfig = {
+			    apiKey: "AIzaSyC249oiaRMRAVgWloI4V7AxDy9Xc6-Orz0",
+			    authDomain: "chat-react-node.firebaseapp.com",
+			    databaseURL: "https://chat-react-node.firebaseio.com",
+			    projectId: "chat-react-node",
+			    storageBucket: "chat-react-node.appspot.com",
+			    messagingSenderId: "125978570622",
+			    appId: "1:125978570622:web:7a6712d1059f1430"
+			  };
+			  // Initialize Firebase
+			  firebase.initializeApp(firebaseConfig);
+			</script>
+
+		charger le package firebase
+			sudo npm install -g firebase-tools
+
+		ou plutot celui-ci
+			npm install --save firebase react-with-firebase-auth
+
+		être connecté à firebase ou gmail: 
+			sudo firebase login
+
+		lancer firebase
+			sudo firebase init
+
+		quand le projet devra être déployer
+			sudo firebase deploy
+
+		et sera visible dans: https://chat-react-node.web.app/
