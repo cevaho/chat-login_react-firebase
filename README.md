@@ -10,15 +10,22 @@ Based on
 * [firebase chat example](https://www.robinwieruch.de/react-firebase-realtime-database/)
 * [firebase chat example](https://www.youtube.com/watch?v=ggcOE25WO7o)
 
-### in order to learn how to create :
+### In order to learn how to create :
 
 * sign-up, sign-in,logout page, forget password and new password
+
 * authentication validation for logged in user and admin
+
 * authorizations with routes
+
 * real time database : firebase instance component with context (provider - consumer)
+
 * Chat / comments that users can add, delete or modify
+
 * multiple modal pop-ups
+
 * design testing with react and bootstrap
+
 
 ## Next STEP:
 
