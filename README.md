@@ -29,4 +29,4 @@ Based on
 
 ## Next STEP:
 
-Adding calendar showing booked dates for an appartment. Displaying availabilities.
+Adding calendar showing booked dates for an appartment. Availability display.

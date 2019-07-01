@@ -46,7 +46,7 @@ const NavigationAuth = ({ authUser }) => (
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="nav navbar-nav mr-auto">
     <li className="nav-item">
-      <NavLink to={ROUTES.HOME} className="nav-link" activeClassName="active">Accueil</NavLink>
+      <NavLink to={ROUTES.HOME} className="nav-link" activeClassName="active">Le chalet</NavLink>
     </li>
     <li className="nav-item">
       <NavLink to={ROUTES.CHAT} className="nav-link" activeClassName="active">Commentaires</NavLink>
@@ -76,7 +76,7 @@ const NavigationNonAuth = () => (
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="nav navbar-nav">
     <li className="nav-item">
-      <Link to={ROUTES.LANDING} className="nav-link">Accueil</Link>
+      <Link to={ROUTES.LANDING} className="nav-link">Le chalet</Link>
     </li>
     <li className="nav-item">
       <Link to={ROUTES.SIGN_IN} className="nav-link">Se connecter</Link>

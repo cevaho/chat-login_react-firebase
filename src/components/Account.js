@@ -123,7 +123,7 @@ class Account extends Component {
 	// affichage des 15 derniers messages en slican l'array
 	renderMessages=()=>{
 		return this.state.messages.slice(0,15).map(message=>(
-			<span>{
+			<span key={message.uid}>{
 			message.username === this.props.firebase.auth.currentUser.displayName
 			/*message.username ==="lila"*/
 				 && (

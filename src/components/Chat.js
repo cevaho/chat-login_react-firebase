@@ -31,7 +31,7 @@ class chat extends Component {
 
 	// fonction qui va faire appel a la database de firebase
 	// dont la référence sera messages
-	// et poussera le contenu du message càd la valeur du state recu depuis l'inout du formulaire
+	// et poussera le contenu du message càd la valeur du state reçu depuis l'input du formulaire
 	writeMessageToDB=(message,dater)=>{
 
 				this.props.firebase.messages()
