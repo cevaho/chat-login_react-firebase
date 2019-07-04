@@ -51,13 +51,11 @@ import 'react-day-picker/lib/style.css';
 /*** GESTION DES STYLES DU CALENDRIER ***/
 
   // style css contenu dans une variable et ajoutée dans le jsx par appel de cette variable
-  const Styler='.DayPicker-Day--highlighted{background-color:orange;color:white;}.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {background-color: #f0f8ff !important;color: #4a90e2;}.Selectable .DayPicker-Day {border-radius: 0 !important;}.Selectable .DayPicker-Day--start{border-top-left-radius: 50% !important;border-bottom-left-radius: 50% !important;}.Selectable .DayPicker-Day--sundays{backgroundColor:#fffdee;}.Selectable .DayPicker-Day--start.DayPicker-Day--sundays {border-top-left-radius: 50% !important;border-bottom-left-radius: 50% !important;background-color:#51A0FA;}.Selectable .DayPicker-Day--end {border-top-right-radius: 50% !important;border-bottom-right-radius: 50% !important;}.DayPicker-Day--onDemand{background-color:orange;}.DayPicker-Day--booked{background-color:red;}';
+  const Styler='';
 
 		/*
 		  // modification du style du jour par une fonction appelée dans le jsx qui va ajouter une class à ce jour
 		  const modifiers = {
-		  	//highlighted: this.state.selectedDay,
-			//birthday: new Date(2019, 6, 30),
 			highlighted: new Date(),
 			sundays: { daysOfWeek: [0] },
 			booked:{from: new Date(2019, 6, 12),to: new Date(2019, 6, 16) }
@@ -66,10 +64,6 @@ import 'react-day-picker/lib/style.css';
 
 	  // pour ajouter des styles en dehors de la balise style, dans la balise
 	  const modifiersStyles = {
-	    birthday: {
-	      color: 'white',
-	      backgroundColor: '#ffc107',
-	    },
 	    sundays: {
 	      color: '#ffc107',
 	    },
@@ -94,7 +88,7 @@ class DatePicker extends Component {
 
     /*this.state = {selectedDay: undefined,};*/
     this.state = this.getInitialState();
-    this.state={booking:[],dejaDemande:[],reservations:[],Twice:[],dater:new Date().getTime(),demandeFaite:false};
+    this.state={booking:[],dejaDemande:[],reservations:[],twice:[],betweener:[],dater:new Date().getTime(),demandeFaite:false};
   }
 
   getInitialState() {
@@ -146,38 +140,17 @@ class DatePicker extends Component {
 
 /*** GESTION selection de date au clic ***/
 
-		/*
-		  // pour la sélection de date unique
-		  handleDayClick(day, { selected, disabled }) {
-
-		    // désélectionne la date si elle était déjà cliquée
-		    if (selected) {
-		      this.setState({ selectedDay: undefined });
-		      return;
-		    }
-
-		    // selon le props disabled qui contient les jours que l'on ne peut pad sélectionné, 
-		    // on empeche la sélection sur un de ses jours, pour l'exemple, le dimanche jour 0
-		    // **** comment désactiver des range de date ?
-		    if (disabled) {
-		      return;
-		    }
-
-		    this.setState({ selectedDay: day });
-		  }
-
-			https://stackoverflow.com/questions/17304426/javascript-date-range-between-date-range
-			http://react-day-picker.js.org/docs/matching-days/
-		*/
+		/*https://stackoverflow.com/questions/17304426/javascript-date-range-between-date-range
+		http://react-day-picker.js.org/docs/matching-days/*/
 
   // pour la sélection de dates multiples (range)
- 	 // booked et  disabled renvoient une boléenne
+ 	// booked et  disabled renvoient une boléenne
   	// handleDayClick(day,{disabled,booked}) {
 
 
 		// fonction hors du loop mais utilisée dans le loop 
 		// pour contenir la valeur des propriétés de l'objet book, dont l'indexer= l'index dans le for each
-		// cela permet de comparer les date de début et de fin des réservations deja effectuées
+		// cela permet de comparer les dates de début et de fin des réservations deja effectuées
 		findFrom = (index,array) =>{
 				return array.find(x => x.indexer === index).from
 				}
@@ -254,44 +227,198 @@ class DatePicker extends Component {
 	    			for (var[index,value] of arrays.entries()){
 						// création de la clé indexer dans chaque objet et de sa valeur = à index
 						value.indexer = index;
-							//console.log(value);console.log(value.indexer);
 				    	};
 	  			};
 
-	// place les dates en double dans un array pour afficher une couleur différente pour celles-ci
-	goTwice=(array)=>{
-			console.log("go twice : arrayDemand = "+JSON.stringify(array));
-			//let arraytwice=[];
-			//let valZeroFrom=array[0].from;
-			//let valFrom=array[0];
-			//console.log(typeof valZeroFrom+" = object");
-			//console.log(typeof valFrom+" = ");
-			//let valZeroTo=array[0].to;
+	// fonction servant à retrouver la position d'une date from dans l'array onDemande
+	// si la position est multiple, indexons sera supérieur à 1
+	checkDateInObject=(array,find)=>{
+				var items = array;
+				var indexons = 0;
+				for(var i = 0; i < items.length; i++) {
+
+					var stringer=items[i].from.toString();
+					/*console.log("items[i].from "+items[i].from+"typeof "+typeof(items[i].from)+"stringé : "
+							+stringer+"typeof "+typeof(stringer));*/
+
+					    if(stringer === find) {
+						indexons += 1;
+						//break;
+					    }
+				}
+				//console.log("indexons "+indexons);
+				return indexons;
+			}
+
+	// place les dates identiques en double dans un array (même .from)
+	// pour afficher une couleur différente pour toute demande de date identique à une autre demande
+	/*goTwice=(array)=>{
+			let arraytwice=[];
+				//console.log("go twice : arrayDemand = "+JSON.stringify(array));
+				//var find = "2019-08-17T10:00:00.000Z";
+				//var find = "Sat Aug 17 2019 12:00:00 GMT+0200 (Central European Summer Time)";
 
 			for(var[index,value] of array.entries()){
 
-				//let array[index];
-				let myok=value.index;
-				console.log("myok "+myok);			
+				//let fromar= this.findFrom(index,array);let toar= this.findTo(index,array);
+					//console.log("fromar = "+fromar+" toar = "+toar);
 
-				let valStr=value.from.toString();
-				let valSec=value.from.getTime();
-				//console.log("value.from.toString()"+valStr+typeof valStr+" = string");
-				//console.log("value.from.getTime()"+valSec+typeof valSec+" = number");
-				let indexa= array.indexOf(valStr);
-				let indesec= array.indexOf(valSec);
-				console.log("verif position dans l'array : "+indexa+" value "+value.from+indesec);
+					console.log("index"+index);
+				let find=value.from.toString();
+				let indexer=this.checkDateInObject(array,find);
+					//console.log("indexons depuis foreach "+indexer);
+				if(indexer>1){
+					      arraytwice.push(value);
+					     }
+
 			     }
+				return arraytwice;
+			};*/
+
+	getBetweenDates=(startDate,endDate)=>{
+				//console.log("getbetweendays activé "+startDate+" "+endDate);
+
+				let objectRange={"from":startDate,"to":endDate};
+
+				/*for(var myDate = startDate; myDate <= endDate; 
+					myDate = new Date(myDate.getTime() + 1000 * 60 * 60 * 24))
+						{
+						    /*var formatedDate = myDate.getMonth()+1;
+						    formatedDate += "/" + myDate.getDate() + "/" + myDate.getFullYear();*/
+						    /*console.log(myDate.getTime());
+						    dates.push(myDate.getTime());
+						}*/
+
+				return objectRange;
+
+				/*
+				// Renvoie un array avec les dates séparées entre 2 dates
+				let getDates = (startDate, endDate) => {
+					  	let dates = [];
+					  	let currentDate = startDate;console.log("currentDate "+currentDate);
+						let addDays = (days) => {
+									// valueof prend la valeur de l'objet qui lui sera assigné
+									let date = new Date(this.valueOf());
+									// définit la date avec le numero du jour du mois + 1
+									date.setDate(date.getDate() + days);
+									console.log("date "+date);
+									return date;
+						      			};
+
+						// lorsque date.debut <= à date.fin
+					  	while (currentDate <= endDate) {
+										//ajoute date.debut au tableau
+					    					dates.push(currentDate);
+										// redéfinit la valeur de date.debut
+										// en utilisant .call qui appel une méthode d'un
+										// autre objet dans l'objet currentDate
+					    					currentDate = addDays.call(currentDate, 1);
+					  					}
+					  	return dates;
+				};
+
+				// Usage
+				var dates = getDates(new Date(2013,10,22),new Date(2013,10,22));
+                                                                                                        
+				dates.forEach(function(date) {
+				  console.log(date);
+				});
+				*/
 			};
 
+	// vérifie si les dates comprennent des dates déjà demandées (pas le même .from)
+	goBetween=(array)=>{
+			let arrayBetween=[];
+			for(var[index,value] of array.entries()){
+						//console.log("index"+index);
+						let fromVal=value.from;let toVal=value.to;
+								
+						// check chaque ligne de l'array 
+						// pour chaque ligne du précédent array
+						for(var[indexa,valuea] of array.entries()){
+							//console.log("index"+index+" indexa "+indexa);
+							if(index!==indexa){
+								let valaFrom=valuea.from;let valaTo=valuea.to;
+								//console.log("fromVal  "+fromVal+" "+toVal);
+								//console.log("valaFrom "+valaFrom+" "+valaTo);
+								//console.log(fromVal.toString()+" "+toVal.toString());
+								//console.log(valaFrom.toString()+" "+valaTo.toString());
+								/*if(fromVal.toString()===valaFrom.toString()
+									&& toVal.toString()===valaTo.toString())
+									{console.log("yolooooooo");}*/
+								
+			switch(true) {
+					// date.debut et date.fin comprises dans le range
+					// date.debut après date-comparée.debut, date.fin avant date-comparée.fin
+					// répétitif avec le case 4 mis en commentaire
+					case (fromVal > valaFrom && toVal < valaTo):
+			console.log("case 1 > <");
+			arrayBetween.push(this.getBetweenDates(fromVal,toVal));
+			//console.log("fromVal "+fromVal+" > valaFrom "+valaFrom+" && toVal"+toVal+" < valaTo "+valaTo);
+					break;
+
+					// date.debut est comprise dans le range
+					// date.debut après date-comparée.debut et date.fin après date-comparée.fin
+					// mais date.debut doit aussi etre dans le range donc < que date-comparée.fin
+					// répétitif avec le case 3 mis en commentaire
+					case (fromVal > valaFrom && fromVal < valaTo && toVal > valaTo):
+			console.log("case 2 > < >");
+			arrayBetween.push(this.getBetweenDates(fromVal,valaTo));
+			//console.log("fromVal "+fromVal+" > valaFrom "+valaFrom+" && toVal"+toVal+" > valaTo "+valaTo);
+					break;
+
+					// si les dates sont identiques
+					case(fromVal.toString()===valaFrom.toString() && toVal.toString()===valaTo.toString()):
+			console.log("case 5 = =");
+			arrayBetween.push(this.getBetweenDates(fromVal,valaTo));
+			//console.log("fromVal "+fromVal+" > valaFrom "+valaFrom+" && toVal"+toVal+" > valaTo "+valaTo);
+					break;
+	
+					// date.fin est comprise dans le range mais pas date.debut
+					// date.debut avant date-comparée.debut fin avant date-comparée.fin
+					/*case (fromVal < valaFrom && toVal < valaTo && toVal > valaFrom):
+			console.log("case 3 < <");
+			console.log("fromVal "+fromVal+" < valaFrom "+valaFrom+" && toVal"+toVal+" < valaTo "+valaTo);
+					break;*/
+
+					// date.debut et date.fin entourent le range
+					// date.debut avant date-comparée.debut fin après date-comparée.fin
+					/*case (fromVal < valaFrom && toVal > valaTo):
+			console.log("case 4 < >");
+			console.log("fromVal "+fromVal+" < valaFrom "+valaFrom+" && toVal"+toVal+" > valaTo "+valaTo);
+					break;*/
+
+					default:console.log("case default");
+			}
+								
+									} //fin if
+	
+						} //fin foreach value of array			
+					}
+			return arrayBetween;
+		      }
+
+	// fonction qui supprime les objets en doublon dans l'array betweener
+	reduceringer=(array)=>{
+				let result = Array.from(new Set(array.map(s => s.from))).map(from=>{
+						return{
+							from:from,
+							to:array.find(s => s.from ===from).to
+							};
+						});
+				//console.log("results "+JSON.stringify(result));
+				return result;
+			}
+
+	// place les dates dans différents tableaux booked ou demande en fonction du statut demande ou booked
+	// ensuite ces arrays sont placés dans des states utilisés pour les css des dates dans le calendrier
 	traiteLesDates=(arrayDates)=>{
-			console.log(" arraydate = "+JSON.stringify(arrayDates));
-			//console.log("traite les dates activé : from = "+arrayDates[0].range.from);
-			console.log("traite les dates activé");
+				//console.log(" arraydate = "+JSON.stringify(arrayDates));
+				//console.log("traite les dates activé : from = "+arrayDates[0].range.from);
+				//console.log("traite les dates activé");
 			let arrayBooked=[];
 			let arrayDemande=[];
 
-			// place les dates dans différents tableaux booked ou demande
 			for(var arraDate of arrayDates){
 				if(arraDate.statut==="demande"){
 					let froma=new Date(arraDate.range.from); 
@@ -310,13 +437,19 @@ class DatePicker extends Component {
 				this.traiteForArrays(arrayBooked);
 
 			    // traite arrayDemande pour y checker les dates demandées plusieures fois par différentes personnes
-				this.goTwice(arrayDemande);
+				//var twicing=this.goTwice(arrayDemande);
+				var betweeners=this.goBetween(arrayDemande);
 
-			console.log("traite les dates : arrayDemand = "+JSON.stringify(arrayDemande));
-			console.log("traite les dates : arrayBooked = "+JSON.stringify(arrayBooked));
-			//this.setState({booking:arrayBooked,dejaDemande:arrayDemande});
-			//this.setState({booking:arrayBooked});
-			this.setState({dejaDemande:arrayDemande,booking:arrayBooked});
+				//console.log("got twice twicing "+JSON.stringify(twicing));
+
+				// création d'un objet Set qui ne prend que les valeurs uniques d'un array
+				let reducBetweeners=this.reduceringer(betweeners);
+					//console.log("gala "+JSON.stringify(reducBetweeners));
+					//console.log("got betweeners "+JSON.stringify(betweeners));
+					//console.log("traite les dates : arrayDemand = "+JSON.stringify(arrayDemande));
+					//console.log("traite les dates : arrayBooked = "+JSON.stringify(arrayBooked));
+
+			this.setState({dejaDemande:arrayDemande,booking:arrayBooked,betweener:reducBetweeners});
 			}
 
 	// place en state la copie de la DB réservations, dans une array traité ensuite pour séparer booked de demande
@@ -360,7 +493,7 @@ class DatePicker extends Component {
 
   render() {
 	
-	const { from, to,dejaDemande,booking,Twice} = this.state;
+	const { from, to,dejaDemande,booking,betweener} = this.state;
         const modifiers = {
 			   highlighted: new Date(),
 			   sundays: { daysOfWeek: [0] },
@@ -368,7 +501,7 @@ class DatePicker extends Component {
 			   end: to,
 			   booked:booking,
 			   onDemand:dejaDemande,
-			   onTwice:Twice,
+			   onBetween:betweener,
 			  };
 
     return (
@@ -384,35 +517,48 @@ class DatePicker extends Component {
 		)*/}
 
 		<div className="col-8">
-		<h2>Affichage des disponibilités et réservations actuelles</h2>
-		{/* 
-		   description des props:
-			handleDayClick sélectionne la date et la place dans le state
-			selectedDays change la couleur de la date sélectionnée selectedDays={this.state.selectedDay} modifié après
-			disabledDays empeche le clic sur les jours définits, ici le dimanche "0"
-			modifiers donne une class à un jour précis pour en changer la couleur
-			locale fr pour définir un langage autre que english, avec localutils
-			modifiersStyles ajoute des styles dans la balise en mode cochon
-		*/} 
-        	<DayPicker 
-			onDayClick={this.handleDayClick} 
+			<h2>Affichage des disponibilités <br /> et réservations actuelles</h2>
+			{/* 
+			   description des props:
+				handleDayClick sélectionne la date et la place dans le state
+				selectedDays change la couleur de la date sélectionnée selectedDays={this.state.selectedDay} modifié après
+				disabledDays empeche le clic sur les jours définits, ici le dimanche "0"
+				modifiers donne une class à un jour précis pour en changer la couleur
+				locale fr pour définir un langage autre que english, avec localutils
+				modifiersStyles ajoute des styles dans la balise en mode cochon
+			*/} 
+			<DayPicker 
+				onDayClick={this.handleDayClick} 
 
-			className="Selectable"
+				className="Selectable"
 
-			selectedDays={[from, { from, to }]}
+				selectedDays={[from, { from, to }]}
 
-			disabledDays={{ before: today }}
+				disabledDays={{ before: today }}
 
-			modifiers={modifiers}
+				modifiers={modifiers}
 
-			locale="fr" 
+				locale="fr" 
 
-			localeUtils={localeUtils}
+				localeUtils={localeUtils}
 
-			modifiersStyles={modifiersStyles}
+				modifiersStyles={modifiersStyles}
 
-			numberOfMonths={4}
-		/>
+				numberOfMonths={2}
+			/>
+			<div className="row">
+			<div className="legende col-6">
+				<ul>
+					<li><span className="boxing red"></span> Déjà réservé, et approuvé</li>
+					<li><span className="boxing orange"></span> Demandé, pas approuvé</li>
+				</ul>
+			</div>
+			<div className="legende col-6">
+				<ul>
+					<li><span className="boxing pink"></span> Plusieurs demandes pour le même jour</li>
+					<li><span className="grey">texte en gris</span> dates impossibles</li>
+				</ul>
+			</div></div>
 		</div>
 
 		<div className="col-4">
@@ -421,14 +567,15 @@ class DatePicker extends Component {
 				{/*<OrdersIndex/>*/}		
           		{!from && !to && (<p>Veuillez sélectionner le premier jour<br />en cliquant sur une date du calendrier</p>)}
           		{from && !to && (<p>Veuillez sélectionner le dernier jour sur ce calendrier</p>)}
+			{from && to &&(<h3>Dates sélectionnée</h3>)}
 			{from && to &&
-			    `Dates sélectionnée du ${from.toLocaleDateString("fr-FR",{year: "numeric", month: "long", day: "numeric"})} au ${to.toLocaleDateString("fr-FR",{year: "numeric", month: "long", day: "numeric"})}`}{' '}
+			    ` du ${from.toLocaleDateString("fr-FR",{year: "numeric", month: "long", day: "numeric"})} au ${to.toLocaleDateString("fr-FR",{year: "numeric", month: "long", day: "numeric"})}`}{' '}
 			{from && to && (
-			      <div>
+			      <div className="goBook">
 				{/*<FormDay fromProps={this.state.from.getTime()}  toProps={this.state.to.getTime()} />*/}
-				<button className="link btn btn-info" onClick={this.onSubmit}>Réserver</button>
+				<button className="link btn btn-info" onClick={this.onSubmit}>Réserver</button><br /><br />
 				<p>La demande sera envoyée à l'administrateur avant confirmation</p>
-				<button className="link btn btn-info" onClick={this.handleResetClick}>Annuler ces dates
+				<button className="link btn btn-danger" onClick={this.handleResetClick}>Annuler ces dates
 					</button>
 			      </div>
 			    		)}
