@@ -113,6 +113,10 @@ class Firebase {
   // pour tous les users
   users = () => this.db.ref('users');
 
+  // raccourci vers les réservations
+  reservations = () => this.db.ref('reservations');
+  reservation = uid => this.db.ref(`reservations/${uid}`);
+
   // *** Message API ***
   message = uid => this.db.ref(`messages/${uid}`);
   messages = () => this.db.ref('messages');

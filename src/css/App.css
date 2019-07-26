@@ -1,0 +1,74 @@
+.App,.reserver h1 {text-align: center;}
+.App-logo {animation: App-logo-spin infinite 20s linear;height: 40vmin;pointer-events: none;}
+.App-header {background-color: #282c34;min-height: 100vh;display: flex;flex-direction: column;align-items: center;
+  justify-content: center;font-size: calc(10px + 2vmin);color: white;}
+.App-link {color: #61dafb;}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+main{margin-top: 40px;}
+.chater,.account{text-align:left;}
+.chater h2{margin-left:38px;}
+h1.col-12{background-color:#fafcff;margin-bottom:30px;}
+
+ul.messenger li{position:relative;text-align:left;}
+ul.messenger li:nth-child(even){background-color:#f2fafd;margin-top:10px;margin-bottom:10px;}
+ul.messenger li span.col-4{padding:0;}
+  .messenger .texter{font-size:1.4em;font-style:italic;letter-spacing:0.02em;}
+  .messenger .col-4 button{margin-top:10px;line-height:13px;padding:6px;}
+ul.messenger button.btn-danger{margin-left:5px;}
+ul.messenger button.btn-success{margin-right:5px;}
+  .messenger span.smaaler{display:block;text-align:right;color:grey;}
+  .messenger .aroz{color:#0568fb;}
+
+.col-12 form{margin-top:15px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid grey;}
+.col-12 form div{margin-bottom:10px;}
+
+.datepicker h3{margin-top:20px;}
+.DayPicker-Day--today{}
+.DayPicker-Day--highlighted{border:1px solid grey;color:grey;}
+.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {background-color: #f0f8ff !important;color: #4a90e2;}
+.Selectable .DayPicker-Day {border-radius: 0 !important;}
+.Selectable .DayPicker-Day--start{border-top-left-radius: 50% !important;border-bottom-left-radius: 50% !important;}
+.Selectable .DayPicker-Day--sundays{backgroundColor:#fffdee;}
+.Selectable .DayPicker-Day--start.DayPicker-Day--sundays {border-top-left-radius: 50% !important;border-bottom-left-radius: 50% !important;background-color:#51A0FA;}
+.Selectable .DayPicker-Day--end {border-top-right-radius: 50% !important;border-bottom-right-radius: 50% !important;}
+.DayPicker-Day--onDemand{background-color:orange;}
+.DayPicker-Day--booked{background-color:red;}
+.DayPicker-Day--onDemand.DayPicker-Day--onTwice{background-color:pink;}
+.DayPicker-Day--onDemand.DayPicker-Day--onBetween{background-color:pink;}
+span.boxing{height:15px;width:15px;display:block;position:absolute;left:0;top:8px;}
+span.boxing.red{background-color:red;}
+span.boxing.orange{background-color:orange;}
+span.boxing.pink{background-color:pink;}
+span.grey{color:#DCE0E0;}
+.legende li{list-style:none;position:relative;padding-left:25px;line-height:30px;text-align:left;}
+.goBook .btn-info{margin-top:15px;}
+.goBook button.btn-danger{line-height:13px;padding:6px;}
+
+.adminer .reserva,.adminer .usering,.reserver{text-align:left;}
+.adminer li{list-style:none;padding-bottom:15px;line-height: 36px;} 
+
+/* reservation list */
+.reserva ul{padding-left: 0;}
+.reserva li.row{margin-right:0px;margin-left:0px;}
+.sameDates{border:1px solid pink;margin-bottom:15px;}
+.pinker,.greyer,.reder,.oranger{padding:15px;margin-bottom:15px;}
+.pinker{background-color:pink;text-align:center;}
+.pinker .bolder{font-weight:bold;}
+.oranger{background-color:rgb(255, 193, 7);}
+.reder{background-color:red;color:white;}
+.greyer{background-color:#DCE0E0;}
+.oranger .col-md-5{padding:0;}
+.modal-content form button,.spaner1 button,.spaner2 button{margin-left:15px;margin-top:10px;}
+.reserver .sameDates .spaner1 button{margin:15px 0;}
+.reserver h4{margin-top: 20px;}
+.adminer .spaner1 button{margin:0px;}
+div .adminer .spaner1 button{margin-left:15px;}

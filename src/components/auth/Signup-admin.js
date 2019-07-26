@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // withrouter permet la redirection apres inscription du user
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import * as ROUTES from './Routes';
 import * as ROLES from './Roles';
@@ -192,7 +192,7 @@ class SignUpFormBase extends Component {
 		/>
 	<div>
 	</div>
-		<label for="isAdmin"> <input name="isAdmin" type="checkbox" checked={isAdmin} onChange={this.onChangeCheckbox} /> Admin
+		<label htmlFor="isAdmin"> <input name="isAdmin" type="checkbox" checked={isAdmin} onChange={this.onChangeCheckbox} /> Admin
 		</label>
 	</div>	
 		

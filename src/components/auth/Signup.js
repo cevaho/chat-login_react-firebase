@@ -39,6 +39,7 @@ const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   error: null,
+  roles: {"normal":"normal"}
 };
 
 //class SignUpForm extends Component {
@@ -56,7 +57,7 @@ class SignUpFormBase extends Component {
   onSubmit = event => {
 
     // prend les valeurs de state
-    const { email,passwordOne,username } = this.state;
+    const { email,passwordOne,username,roles } = this.state;
     
 
     // on en aura besoin pour les conditions dans les components :
@@ -74,7 +75,7 @@ class SignUpFormBase extends Component {
           .user(authUser.user.uid)
           .set({
             username,
-            email,
+            email,roles
           });
       })
       .then(authUser => {
@@ -119,7 +120,7 @@ class SignUpFormBase extends Component {
       email,
       passwordOne,
       passwordTwo,
-      error,
+      error
     } = this.state;
 
     // pour la validation des champs si les conditions sont remplies on peut activer le bouton d'envoi du formulaire

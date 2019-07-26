@@ -1,0 +1,19 @@
+{
+  "-LihNU7kHAtb-NV09X6V" : {
+    "dateEnvoi" : 1561981996867,
+    "range" : {
+      "from" : 1564999200000,
+      "to" : 1565344800000
+    },
+    "statut" : "booked",
+    "username" : "Cédric Van Hove"
+  },
+  "date1" : {
+    "range" : {
+      "from" : "1553295600000",
+      "to" : "1556229600000"
+    },
+    "statut" : "booked",
+    "username" : "Cédric Van Hove"
+  }
+}

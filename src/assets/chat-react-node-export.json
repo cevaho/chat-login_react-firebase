@@ -1,18 +1,178 @@
 {
-  "users" : {
-    "H8loxMNg7Lb9dxNWQZ4HYvgPLiN2" : {
-      "email" : "bazar2@gmail.com",
-      "username" : "Bazar"
-    },
-    "quv7ekFj1oQnmGtXCFaHV4Kri1S2" : {
-      "email" : "lila@gmail.com",
+  "messages" : {
+    "-Lh_MxcLo0R1AOL7IEOm" : {
+      "date" : "lundi 17 juin 2019 à 14:17",
+      "text" : "bonjour tout le monde !",
       "username" : "lila"
+    },
+    "-LhjmSKZMr-AJaxO_deV" : {
+      "date" : "mercredi 19 juin 2019 à 14:50",
+      "text" : "Boum fait l'orage",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lhk8PkXCGiTdDZOXvR3" : {
+      "date" : "mercredi 19 juin 2019 à 16:29",
+      "text" : "BIM ! BAM ! BOUM !",
+      "username" : "lila"
+    },
+    "-Lholk1mIkrfs5acrW7J" : {
+      "date" : "jeudi 20 juin 2019 à 13:35",
+      "text" : "Hello guyz, nickel chrome !",
+      "username" : "Cédric Van Hove"
     }
   },
-  "messages" : {
-    "xyz":{
-      "text":"olé premier text",
-      "username":"lila"
+  "reservations" : {
+    "-LihmMLlJCN6dvj8_nj5" : {
+      "dateEnvoi" : 1561988770660,
+      "range" : {
+        "from" : 1566036000000,
+        "to" : 1566554400000
+      },
+      "statut" : "demande",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lihml59lD_b0WcoOLsB" : {
+      "dateEnvoi" : 1561988770660,
+      "range" : {
+        "from" : 1566036000000,
+        "to" : 1566554400000
+      },
+      "statut" : "demande",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lihmo0vSuSU4_gUd6NS" : {
+      "dateEnvoi" : 1561988770660,
+      "range" : {
+        "from" : 1566640800000,
+        "to" : 1567159200000
+      },
+      "statut" : "demande",
+      "username" : "Cédric Van Hove"
+    },
+    "-LihqLgqW8_8lx_5QChu" : {
+      "dateEnvoi" : 1561989829987,
+      "range" : {
+        "from" : 1564826400000,
+        "to" : 1565344800000
+      },
+      "statut" : "demande",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lir1u4tM7ayGk2NZtBR" : {
+      "dateEnvoi" : 1562144088083,
+      "range" : {
+        "from" : 1563012000000,
+        "to" : 1563962400000
+      },
+      "statut" : "refuse",
+      "username" : "Cédric Van Hove"
+    },
+    "-LiwAATwv8TmUSUW0bR1" : {
+      "dateEnvoi" : 1562229910652,
+      "range" : {
+        "from" : 1564999200000,
+        "to" : 1565344800000
+      },
+      "statut" : "refuse",
+      "username" : "Cédric Van Hove"
+    },
+    "-LiwFBcwKOl3ZqsP-VI4" : {
+      "dateEnvoi" : 1562231484866,
+      "range" : {
+        "from" : 1565604000000,
+        "to" : 1565863200000
+      },
+      "statut" : "refuse",
+      "username" : "Cédric Van Hove"
+    },
+    "-LiwLHfR0PKAhWrJxP40" : {
+      "dateEnvoi" : 1562232756123,
+      "range" : {
+        "from" : 1565085600000,
+        "to" : 1565258400000
+      },
+      "statut" : "refuse",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lk3RVG2WUrD0yT1Lz7J" : {
+      "dateEnvoi" : 1563442643182,
+      "range" : {
+        "from" : 1565431200000,
+        "to" : 1565690400000
+      },
+      "statut" : "demande",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lk3RXGanyVoQ_Dq3RTw" : {
+      "dateEnvoi" : 1563442643182,
+      "range" : {
+        "from" : 1565604000000,
+        "to" : 1565949600000
+      },
+      "statut" : "refuse",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lk3TGlNV4iYggsAX-VM" : {
+      "dateEnvoi" : 1563443001248,
+      "range" : {
+        "from" : 1563616800000,
+        "to" : 1564048800000
+      },
+      "statut" : "booked",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lk3TRh-jhqJwDJRRfHq" : {
+      "dateEnvoi" : 1563443173043,
+      "range" : {
+        "from" : 1564221600000,
+        "to" : 1564567200000
+      },
+      "statut" : "booked",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lk3ztV2_fd6HHYr7MQW" : {
+      "dateEnvoi" : 1563446318312,
+      "range" : {
+        "from" : 1566381600000,
+        "to" : 1566727200000
+      },
+      "statut" : "demande",
+      "username" : "Cédric Van Hove"
+    },
+    "-Lk3zvejtcBhFD-xFqhR" : {
+      "dateEnvoi" : 1563446318312,
+      "range" : {
+        "from" : 1565776800000,
+        "to" : 1566381600000
+      },
+      "statut" : "refuse",
+      "username" : "Cédric Van Hove"
+    },
+    "undefined" : {
+      "statut" : "booked"
+    }
+  },
+  "users" : {
+    "LnwNQpBLnjWt3FfEK0i8uicN74e2" : {
+      "email" : "cedkweli@hotmail.com",
+      "roles" : {
+        "ADMIN" : "ADMIN"
+      },
+      "username" : "Cédric Van Hove"
+    },
+    "XYtsWRr9soYmibnZbys2ldatkZC3" : {
+      "email" : "yoga@gmail.com",
+      "roles" : {
+        "ADMIN" : "ADMIN"
+      },
+      "username" : "yoga"
+    },
+    "mfhySfw8myg1zMEwpGUC3IQhpb32" : {
+      "email" : "testa@testa.com",
+      "roles" : {
+        "normal" : "normal"
+      },
+      "username" : "testa"
     }
   }
 }
